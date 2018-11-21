@@ -25,14 +25,14 @@ app.get('/js/charts.js', browserify(__dirname + '/charts.js'));
 app.use('/admin', express.static('client'));
 
 app.get('/stats/data.json', async (req, res, next) => {
-  const story1P = library.getStoryData('story1');
-  const story2P = library.getStoryData('story2');
-  const story3P = library.getStoryData('story3');
-  const story4P = library.getStoryData('story4');
+  const ooh_story1P = library.getStoryData('ooh_story1');
+  const ooh_story2P = library.getStoryData('ooh_story2');
+  const ooh_story3P = library.getStoryData('ooh_story3');
+  const ooh_story4P = library.getStoryData('ooh_story4');
 
   let stories;
   try {
-    stories = await Promise.all([story1P, story2P, story3P, story4P]);
+    stories = await Promise.all([ooh_story1P, ooh_story2P, ooh_story3P, ooh_story4P]);
   } catch(e) {
     next(e);
 
@@ -62,61 +62,61 @@ app.post('/', (req, res) => {
     parameters: { save: 'me' },
   };
 
-  if (result.interaction.name.substring(0, 12) === 'choose story') {
+  if (result.interaction.name.substring(0, 15) === 'choose ooh_story') {
     switch (result.interaction.name) {
-      case 'choose story1':
-        library.logStoryChoice(result.interaction.name.substring(7, 13));
+      case 'choose ooh_story1':
+        library.logStoryChoice(result.interaction.name.substring(7, 16));
         break;
-      case 'choose story2':
-        library.logStoryChoice(result.interaction.name.substring(7, 13));
+      case 'choose ooh_story2':
+        library.logStoryChoice(result.interaction.name.substring(7, 16));
         break;
-      case 'choose story3':
-        library.logStoryChoice(result.interaction.name.substring(7, 13));
+      case 'choose ooh_story3':
+        library.logStoryChoice(result.interaction.name.substring(7, 16));
         break;
-      case 'choose story4':
-        library.logStoryChoice(result.interaction.name.substring(7, 13));
+      case 'choose ooh_story4':
+        library.logStoryChoice(result.interaction.name.substring(7, 16));
         break;
     }
-  } else if (result.interaction.name.substring(0, 12) === 'end of story') {
+  } else if (result.interaction.name.substring(0, 15) === 'end of ooh_story') {
     switch (result.interaction.name) {
-      case 'end of story1':
-        library.logStoryCompleted(result.interaction.name.substring(7, 13));
+      case 'end of ooh_story1':
+        library.logStoryCompleted(result.interaction.name.substring(7, 16));
         break;
-      case 'end of story2':
-        library.logStoryCompleted(result.interaction.name.substring(7, 13));
+      case 'end of ooh_story2':
+        library.logStoryCompleted(result.interaction.name.substring(7, 16));
         break;
-      case 'end of story3':
-        library.logStoryCompleted(result.interaction.name.substring(7, 13));
+      case 'end of ooh_story3':
+        library.logStoryCompleted(result.interaction.name.substring(7, 16));
         break;
-      case 'end of story4':
-        library.logStoryCompleted(result.interaction.name.substring(7, 13));
+      case 'end of ooh_story4':
+        library.logStoryCompleted(result.interaction.name.substring(7, 16));
         break;
     }
-  } else if (result.interaction.name.substring(0, 10) === 'rate story') {
+  } else if (result.interaction.name.substring(0, 13) === 'rate ooh_story') {
     switch (result.interaction.name) {
-      case 'rate story1':
+      case 'rate ooh_story1':
         console.log('resolved query', result.resolvedQuery);
         library.addStoryRating(
-          result.interaction.name.substring(5, 11),
+          result.interaction.name.substring(5, 14),
           ratings[result.resolvedQuery]
         );
         break;
-      case 'rate story2':
+      case 'rate ooh_story2':
         console.log('resolved query', result.resolvedQuery);
         library.addStoryRating(
-          result.interaction.name.substring(5, 11),
+          result.interaction.name.substring(5, 14),
           ratings[result.resolvedQuery]
         );
         break;
-      case 'rate story3':
+      case 'rate ooh_story3':
         library.addStoryRating(
-          result.interaction.name.substring(5, 11),
+          result.interaction.name.substring(5, 14),
           ratings[result.resolvedQuery]
         );
         break;
-      case 'rate story4':
+      case 'rate ooh_story4':
         library.addStoryRating(
-          result.interaction.name.substring(5, 11),
+          result.interaction.name.substring(5, 14),
           ratings[result.resolvedQuery]
         );
         break;
