@@ -100,7 +100,7 @@ app.post('/', (req, res) => {
         break;
       case 'rate ooh_story4':
         library.addStoryRating(
-          result.interaction.name.substring(5, 14),
+          result.interaction.name.substring(5, 15),
           ratings[result.resolvedQuery]
         );
         break;
